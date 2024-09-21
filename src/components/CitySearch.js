@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const CitySearch = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+const CitySearch = ({ onSearch, city }) => {
+  const [query, setQuery] = useState(city);
   const [error, setError] = useState(null);
 
   const handleSearch = () => {

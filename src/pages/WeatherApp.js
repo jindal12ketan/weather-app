@@ -16,6 +16,7 @@ const WeatherApp = () => {
 
   useEffect(() => {
     fetchWeather(city);
+    fetchForecast(city);
   }, [city]);
 
   const fetchWeather = async (city) => {
@@ -23,7 +24,6 @@ const WeatherApp = () => {
       setError(null);
       const data = await fetchWeatherData(city);
       setWeatherData(data);
-      fetchForecast(city);
     } catch (error) {
       alert('City not found. Please try again.');
     }
@@ -48,7 +48,7 @@ const WeatherApp = () => {
 
   return (
     <div className="weather-app">
-      <CitySearch onSearch={handleSearch} />
+      <CitySearch onSearch={handleSearch} city={city} />
 
       {error && <p className="error-message">{error}</p>}
 
